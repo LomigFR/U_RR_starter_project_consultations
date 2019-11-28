@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { selectUser } from "../actions/index";
+
+/**
+ * Import de bindActionCreator qui permet de faire communiquer un action creator avec tous les
+ * reducers comme prévu dans Redux.
+ */
+import { bindActionCreators } from "redux";
 
 /**
  * Dans ce répertoire, on parle de "containers".
@@ -25,7 +32,11 @@ class UserList extends Component {
         <ul className="col-md-4">
           {this.props.myUsers.map(user => {
             return (
-              <li className="list-group-item" key={user.id}>
+              <li
+                className="list-group-item"
+                key={user.id}
+                onClick={() => this.props.selectUser(user)}
+              >
                 {user.name}
               </li>
             );
@@ -47,8 +58,22 @@ function mapStateToProps(state) {
 }
 
 /**
+ * Ici, il s'agit de binder l'action avec tous les reducers (l'idée est de dispatcher le résultat
+ * de l'action selectUser à tous les reducers) : l'action est associée à la clé selectUser des props et
+ * quand on appelle this.props.selectUser dorénavant, l'action correspondante est envoyée à tous les
+ * reducers. Ceci fait, le reducer concerné par cette action va en mettre le résultat dans le state et
+ * donc, l'utilisateur sélectionné devient accessible de partout.
+ */
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectUser: selectUser }, dispatch);
+}
+
+/**
  * Ici, on connecte le container à Redux :
  * mapStateToProps devient la fonction de pont entre React et Redux.
  * Elle permet, à partir du state, de récupérer la liste des utilisateurs retournée par reducer_users.
  */
-export default connect(mapStateToProps)(UserList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserList);

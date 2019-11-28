@@ -1,9 +1,7 @@
-### ReactRedux-Starter ###
+# U_RR_starter_project_exchange_rate
 
-Pour installer le projet se placer dans le projet et lancer : 
+Ce projet a été réalisé en suivant le cours React-Redux pas-à-pas de Robin Lebhar, sur le site Udemy.com.
 
-```
-> npm install
-> npm start
-```
+Il s'appuie sur un squelette de code trouvé ici :
 
+https://github.com/RobinLebhar/React-Redux-Starter-Create-React-App

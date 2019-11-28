@@ -5,7 +5,7 @@
 
 import { combineReducers } from "redux";
 import UsersReducer from "./reducer_users";
-
+import ActiveUserReducer from "./reducer_activeUser";
 /**
  * Ici, on fait un mapping entre le résultat retourné par chaque reducer et une partie du state
  * de l'application :
@@ -14,7 +14,8 @@ import UsersReducer from "./reducer_users";
  * un bout du state de l'application.
  */
 const rootReducer = combineReducers({
-  users: UsersReducer
+  users: UsersReducer,
+  activeUser: ActiveUserReducer
 });
 
 export default rootReducer;
