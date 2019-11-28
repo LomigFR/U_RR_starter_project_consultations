@@ -1,4 +1,4 @@
-# U_RR_starter_project_exchange_rate
+# U_RR_starter_project_consultations
 
 Ce projet a été réalisé en suivant le cours React-Redux pas-à-pas de Robin Lebhar, sur le site Udemy.com.
 
